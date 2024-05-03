@@ -4,14 +4,9 @@ import { fetchRandomContact } from "../utility/api";
 import DetailListItem from "../components/DetailListItem";
 import colors from "../utility/colors";
 import ContactThumbnail from "../components/ContactThumbnail";
-const Profile = () =>
+const Profile = ({route}) =>
 {
-    const [contact, setContact] = useState({});
-    useEffect(()=>{
-        fetchRandomContact().then(
-            contact => setContact(contact)
-        )
-    }, [])
+    const {contact} = route.params;
     const {avatar, name, email, phone, cell} = contact;
     return (
         <View style={styles.container}>
@@ -22,9 +17,6 @@ const Profile = () =>
                 <DetailListItem icon="mail" title="Email" subtitle={email}/>
                 <DetailListItem icon="phone" title="Work" subtitle={phone}/>
                 <DetailListItem icon="smartphone" title="Personal" subtitle={cell}/>
-            {/* <Avartar.Image source={{url:avatar}}
-            size={100}/> */}
-
             </View>
         </View>
     )
@@ -40,8 +32,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.blue,
-        color:"red"
+        backgroundColor: colors.blue
     },
     detailsSection:{
         flex:1,

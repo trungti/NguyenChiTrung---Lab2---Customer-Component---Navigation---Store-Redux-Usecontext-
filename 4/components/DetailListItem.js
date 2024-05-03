@@ -14,7 +14,7 @@ const DetailListItem = ({icon, title, subtitle})=>
                     {icon &&(
                         <Icon
                             name={icon}
-                            size={50}
+                            size={24}
                             style={{
                                 color:colors.black,
                                 marginRight:20
